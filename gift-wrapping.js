@@ -13,4 +13,4 @@ function wrapping(gifts) {
 const gifts = ['cat', 'game', 'socks']
 const wrapped = wrapping(gifts)
 
-console.log(wrapped)
+console.log(wrapped);
