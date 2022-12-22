@@ -11,5 +11,5 @@ NC='\033[0m'
 # Connect .gitconfig
 git config --local user.email morabautistaantonio@gmail.com
 git config --local user.name 'Antonio Mora Bautista'
-echo "${GREEN}Git config updated:${GREEN}\n"
+echo "${GREEN}Git config updated:\n"
 git config --local --list
