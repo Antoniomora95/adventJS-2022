@@ -34,8 +34,8 @@ function createCube(size) {
 
 
 
-  const cube = createCube(3);
-  console.log(cube);
+  const cube = createCube(20);
+  console.error(cube);
 
 // output:
 //   /\_\_\_\
