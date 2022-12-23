@@ -1,3 +1,5 @@
+// https://adventjs.dev/en/challenges/2022/7
+
 function getGiftsToRefill(a1, a2, a3) {
     let store = {
         visited: {},
