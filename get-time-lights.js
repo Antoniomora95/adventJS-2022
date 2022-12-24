@@ -1,8 +1,5 @@
 function countTime(leds) {
     let time = 0;
-    let missingLeds = leds.filter(led => led !== 1).length;
-    if (missingLeds === 0)
-        return time;
     let strLeds = leds.join('');
     while (strLeds.indexOf('0') !== -1) {
         time += 1;
