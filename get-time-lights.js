@@ -1,3 +1,5 @@
+// https://adventjs.dev/challenges/2022/9
+
 function countTime(leds) {
     let time = 0;
     let strLeds = leds.join('');
