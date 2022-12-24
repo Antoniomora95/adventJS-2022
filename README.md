@@ -4,6 +4,7 @@ Repo for my AdventJS 2022 algorithm solutions
 ## Prerequisites
 
 You must have Node.js installed on your machine in order to run the scripts, you can get it here: https://nodejs.org/en/download/
+### Please be sure to install  NodeJS 15+  since methods like replaceAll are available from there upwards.
 
 ## Steps to run a script
 
