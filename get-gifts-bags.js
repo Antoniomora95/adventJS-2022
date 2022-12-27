@@ -1,3 +1,5 @@
+// https://adventjs.dev/en/challenges/2022/17
+
 function carryGifts(gifts, maxWeight) {
     let groups = [];
     gifts = gifts.filter(g => g.length <= maxWeight);
@@ -19,3 +21,8 @@ function carryGifts(gifts, maxWeight) {
     }
     return groups;
 }
+
+console.log(carryGifts(['game', 'bike', 'book', 'toy'], 10)); // ['game bike', 'book toy']
+console.log(carryGifts(['game', 'bike', 'book', 'toy'], 7)) // ['game', 'bike', 'book toy']
+console.log(carryGifts(['game', 'bike', 'book', 'toy'], 4)) // ['game', 'bike', 'book', 'toy']
+console.log(carryGifts(['toy', 'gamme', 'toy', 'bike'], 6)) // ['toy', 'gamme', 'toy', 'bike']
