@@ -1,29 +1,31 @@
 // https://adventjs.dev/en/challenges/2022/7
 
 function getGiftsToRefill(a1, a2, a3) {
-    let store = {
-        visited: {},
-        refill: {}
-    };
-    const getReducer = function (currentLocation) {
-        return function (store, gift) {
-            const {visited, refill} = store;
-            const giftExistsAt = visited[gift];
-            if (giftExistsAt && giftExistsAt !== currentLocation) {
-                delete refill[gift];
-            } else {
-                visited[gift] = currentLocation;
-                refill[gift] = currentLocation;
+    let state = {
+        unique: new Set(a1),
+        ignore: new Set()
+    }
+    a2 = [...new Set(a2)];
+    a3 = [...new Set(a3)];
+
+    const getReducer = function () {
+        return function (state, gift) {
+            const {unique, ignore} = state;
+            const notUnique = unique.has(gift);
+            const isIgnored = ignore.has(gift);
+            if (notUnique) {
+                unique.delete(gift);
+                ignore.add(gift);
+            } else if (!notUnique && !isIgnored) {
+                unique.add(gift);
             }
-            return store;
+            return state;
         }
     }
 
-    store = a1.reduce(getReducer('a1'), store);
-    store = a2.reduce(getReducer('a2'), store);
-    store = a3.reduce(getReducer('a3'), store);
-
-    return Object.keys(store.refill);
+    state = a2.reduce(getReducer(), state);
+    state = a3.reduce(getReducer(), state);
+    return [...state.unique];
 }
 
 const a1 = ['bike', 'car', 'bike', 'bike']
