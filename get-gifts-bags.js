@@ -3,18 +3,20 @@
 function carryGifts(gifts, maxWeight) {
     let groups = [];
     gifts = gifts.filter(g => g.length <= maxWeight);
+    if (gifts.length < 1)
+      return [];
+    groups.push(gifts[0]);
     function canMerge(acc, curr, max) {
-        acc = acc.replaceAll(' ', '');
+         acc = acc.replace(/\s/g, '');
         return (acc.length + curr.length) <= max;
     }
-    for (let i = 0; i < gifts.length; i++) {
+    for (let i = 1; i < gifts.length; i++) {
         const curr = gifts[i];
         const acc = groups[groups.length - 1];
-        const merge = canMerge(acc || '', curr, maxWeight);
+        const merge = canMerge(acc, curr, maxWeight);
         if (merge) {
             let last = groups.pop();
-            const merged = last ? `${last} ${curr}` : curr;
-            groups.push(merged);
+            groups.push(`${last} ${curr}`);
         } else {
             groups.push(curr);
         }
