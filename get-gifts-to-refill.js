@@ -16,7 +16,7 @@ function getGiftsToRefill(a1, a2, a3) {
             if (notUnique) {
                 unique.delete(gift);
                 ignore.add(gift);
-            } else if (!notUnique && !isIgnored) {
+            } else if (!isIgnored) {
                 unique.add(gift);
             }
             return state;
