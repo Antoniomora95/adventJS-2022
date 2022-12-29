@@ -1,21 +1,23 @@
 // https://adventjs.dev/en/challenges/2022/10
-function checkJump(heights) {
-    function reducer(path, _, i, h) {
-        let curr = h[i];
-        let last = h[i - 1];
-        const subs = path.substring(path.length - 1);
-        const up = '1';
-        const down = '0';
-        if (last !== undefined && curr > last && subs !== up)
-            return path + up;
-        else if (curr < last && subs !== down)
-            return path + down;
-        return path;
-    }
-    const res = heights.reduce(reducer, '');
-    return res === '10';
-}
 
+function checkJump(heights) {
+  
+    let last = heights[0];
+    let path = '';
+    for (let i = 1; i < heights.length; i++) {
+      const now = heights[i];
+      if (now > last) {
+        path = `${path}1`;
+      } else if (now < last) {
+        path = `${path}0`
+      }
+      last = now;
+    }
+    // increase score from 10 to 40 thanks to
+    /*https://stackoverflow.com/questions/55636593/remove-consecutive-duplicate-characters-in-a-string-javascript */
+    const clean = path.replace(/(.)\1+/g, '$1')
+    return clean === '10';
+}
 
 
 const heights = [1, 3, 8, 5, 2]
