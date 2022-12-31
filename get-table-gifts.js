@@ -12,29 +12,18 @@ function printTable(gifts) {
         if (r > right)
             right = r;
     }
-    let above = '+'.repeat(19 + (left - 4) + (right - 8)) + '\n';
-    let below = '*'.repeat(19 + (left - 4) + (right - 8));
+    let above = '+'.repeat(7 + left + right) + '\n';
+    let below = '*'.repeat(7 + left + right);
 
     const lineLeft = '-'.repeat(left);
     const lineRight = '-'.repeat(right);
     gifts.splice(1, 0, { name: lineLeft, quantity: lineRight });
 
-
-    const getMissingOffset = ({ left, right, name, quantity }) => {
-        const cl = left - name.length;
-        const cr = right - quantity.toString().length;
-        const ml = ' '.repeat(cl);
-        const mr = ' '.repeat(cr);
-        return {
-            ml,
-            mr
-        }
-    }
-
     const content = gifts.map((gift) => {
         const { name, quantity } = gift;
-        const { ml, mr } = getMissingOffset({ left, right, name, quantity })
-        const template = `| ${name}${ml} | ${quantity}${mr} |\n`
+        const nameC = name.padEnd(left, ' ');
+        const quantityC = quantity.toString().padEnd(right, ' ');
+        const template = `| ${nameC} | ${quantityC} |\n`
         return template;
     });
     return above + content.join('') + below;
