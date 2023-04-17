@@ -57,9 +57,7 @@ const removeNthFromEnd = (head, n) => {
         }
         return buildNestedList(arrayDigits, 0);
     }
-    const response = getLinkedListFromArray(allDigits);
-  
-    return response;
+    return getLinkedListFromArray(allDigits);
   };
 
 console.log(removeNthFromEnd(data, NTH_ELEMENT_END), 'removeNthFromEnd');
